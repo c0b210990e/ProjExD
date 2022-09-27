@@ -20,9 +20,6 @@ def shutudai(alphabet):
     ##print("デバッグ用欠損文字:",kesson)
 
 
-
-
-
 def kaitou(kotae):
     a = int(input("欠損文字はいくつあるでしょうか？:"))
     if a != global_kesson:
@@ -40,9 +37,6 @@ def kaitou(kotae):
             print("正解です")
 
     return False
-
-
-
 
 
 alphabet = [chr(i+65) for i in range(global_alphabet)]
