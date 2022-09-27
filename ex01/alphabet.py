@@ -21,11 +21,12 @@ def shutudai(alphabet):
 
 
 
+
+
 def kaitou(kotae):
     a = int(input("欠損文字はいくつあるでしょうか？:"))
     if a != global_kesson:
         print("不正解です")
-        return False 
     else:
         print("正解です。それでは、具体的に欠損文字を一つずつ入力してください")
         for i in range(a):
@@ -34,12 +35,19 @@ def kaitou(kotae):
                 print("不正解です。またチャレンジしてください")
                 return False
             else:
-                print("正解です")
+                kotae.remove(n)
+        else:
+            print("正解です")
 
-    
+    return False
+
+
+
+
 
 alphabet = [chr(i+65) for i in range(global_alphabet)]
 shutudai(alphabet)
 kotae = shutudai(alphabet)
 kaitou(kotae)
+
 
