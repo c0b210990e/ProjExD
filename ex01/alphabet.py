@@ -25,12 +25,14 @@ def kaitou(kotae):
     a = int(input("欠損文字はいくつあるでしょうか？:"))
     if a != global_kesson:
         print("不正解です")
+        return False 
     else:
         print("正解です。それでは、具体的に欠損文字を一つずつ入力してください")
         for i in range(a):
             n = input(f"{i+1}つ目の文字を入力してください:")
             if n != kotae:
                 print("不正解です。またチャレンジしてください")
+                return False
             else:
                 print("正解です")
 
