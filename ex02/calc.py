@@ -21,13 +21,6 @@ def click_equal(event):
     entry.delete(0,tk.END)
     entry.insert(tk.END,result)
 
-
-
-
-
-
-
-
 entry = tk.Entry(root,width=10,font=("",40),justify="right",bg="gray")
 entry.grid(row=0,column=0,columnspan=3)
 
