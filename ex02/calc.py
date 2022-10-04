@@ -18,8 +18,8 @@ def right_click(event):
     event.widget["bg"] = "white"
 
 def click_equal(event):
-    a = entry.get()
-    result = eval(a)
+    eqn = entry.get()
+    result = eval(eqn)
     entry.delete(0, tk.END)
     entry.insert(tk.END, result)
 
