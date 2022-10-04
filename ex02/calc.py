@@ -4,6 +4,7 @@ import tkinter.messagebox as tkm
 root = tk.Tk()
 root.geometry("300x500")
 
+#左クリックしたら
 def button_click(event):
     btn = event.widget
     n= btn["text"]
@@ -11,6 +12,7 @@ def button_click(event):
     #tkm.showinfo(f"{n}",f"{n}ボタンがクリックされました")
     entry.insert(tk.END,n)
 
+#右クリックしたら
 def right_click(event):
     entry.delete(0,tk.END)
     event.widget["bg"] = "white"
