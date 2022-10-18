@@ -1,5 +1,16 @@
 import tkinter as tk
 
+def key_down(event): #練習5
+    global key
+    key = event.keysym
+
+
+def key_up(event): #練習6
+    global key
+    key = ""
+
+
+
 if __name__ == "__main__":
     root = tk.Tk()
     root.title("迷えるこうかとん") #練習1
@@ -8,6 +19,10 @@ if __name__ == "__main__":
     tori = tk.PhotoImage(file="fig/6.png") #練習3
     cx, cy = 300, 400
     canv.create_image(cx, cy, image = tori, tag="tori")
+
     #練習4
     key = "" #現在押されているキーを表す
+
+    root.bind("<KeyPress>", key_down)
+    root.bind("<KeyRelease>", key_up)
     root.mainloop()
