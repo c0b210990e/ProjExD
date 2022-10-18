@@ -10,7 +10,6 @@ def key_up(event): #練習6
     global key
     key = ""
 
-
 def main_proc(): #練習7
     global tmr
     global mx, my 
