@@ -37,6 +37,7 @@ def main_proc(): #練習7
     canv.coords("tori", cx, cy)
     root.after(100,main_proc)
 
+#タイマー機能(秒数がカウントアップされる)
 def count_up():
     global tmr
     tmr += 1
