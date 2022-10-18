@@ -4,7 +4,6 @@ import maze_maker as mm #練習8
 def key_down(event): #練習5
     global key
     key = event.keysym
-    root.after(1000,count_up)
 
 def key_up(event): #練習6
     global key
