@@ -1,4 +1,5 @@
 import tkinter as tk
+import maze_maker as mm #練習8
 
 def key_down(event): #練習5
     global key
@@ -22,6 +23,7 @@ def main_proc(): #練習7
     canv.coords("tori", cx, cy)
     root.after(100,main_proc)
 
+
 if __name__ == "__main__":
     root = tk.Tk()
     root.title("迷えるこうかとん") #練習1
@@ -39,4 +41,11 @@ if __name__ == "__main__":
 
     #練習7
     main_proc()
+
+    #練習9
+    maze_list = mm.make_maze(15,9)
+    print(maze_list) #1:壁/0:床を表す
+
+    #練習10
+    mm.show_maze(canv, maze_list)
     root.mainloop()
