@@ -26,7 +26,6 @@ def main_proc(): #練習7
     if maze_list[my][mx] == 0: #床だったら
         cx, cy = mx*100+50, my*100+50
     else: #壁だったら
-        tmr += 10
         if key == "Up":
             my += 1
         if key == "Down":
@@ -35,6 +34,7 @@ def main_proc(): #練習7
             mx += 1
         if key == "Right":
             mx -= 1
+        tmr += 10 #タイマーの秒数を10増やす
     canv.coords("tori", cx, cy)
     root.after(100,main_proc)
 
@@ -42,7 +42,8 @@ def count_up():
     global tmr
     tmr += 1
     label["text"] = tmr
-        
+    root.after(1000,count_up)
+     
 
 if __name__ == "__main__":
     root = tk.Tk()
