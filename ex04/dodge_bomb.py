@@ -31,7 +31,7 @@ def main():
 
     bomb_sfc = pg.Surface((100,100))
     bomb_sfc.set_colorkey((0,0,0))
-    pg.draw.circle(bomb_sfc,(255,0,0),(50,50),50) #半径10の赤い円
+    pg.draw.circle(bomb_sfc,(255,0,0),(50,50),50) #半径50の赤い円
     pg.draw.circle(bomb_sfc,(191,0,0),(50,50),40)
     pg.draw.circle(bomb_sfc,(127,0,0),(50,50),30)
     pg.draw.circle(bomb_sfc,(63,0,0),(50,50),20)
@@ -43,7 +43,7 @@ def main():
     vx = 2
     vy = 2
 
-    clock = pg.time.Clock()
+    clock = pg.time.Clock() #時間計測用のオブジェクト
 
     while True:
         scrn_sfc.blit(bg_sfc,bg_rct)
