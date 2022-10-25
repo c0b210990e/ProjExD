@@ -19,7 +19,7 @@ def check_bound(obj_rct, scr_rct):
 
 def main():
     pg.display.set_caption("逃げろ！こうかとん") #タイトルバーに「逃げろ！こうかとん」と表示
-    scrn_sfc = pg.display.set_mode((1600,900)) #800×600の画面Surfaceを生成
+    scrn_sfc = pg.display.set_mode((1600,900)) #1600×900の画面Surfaceを生成
     scrn_rct = scrn_sfc.get_rect()
     bg_sfc = pg.image.load("fig/pg_bg.jpg")
     bg_rct = bg_sfc.get_rect()
@@ -29,14 +29,15 @@ def main():
     tori_rct = tori_sfc.get_rect()
     tori_rct.center = 900, 400
 
-    bomb_sfc = pg.Surface((20,20))
+    bomb_sfc = pg.Surface((80,80))
     bomb_sfc.set_colorkey((0,0,0))
-    pg.draw.circle(bomb_sfc,(255,0,0),(10,10),10) #半径10の赤い円
+    pg.draw.circle(bomb_sfc,(255,0,0),(40,40),20) #半径10の赤い円
     bomb_rct = bomb_sfc.get_rect()
     bomb_rct.centerx = randint(0, scrn_rct.width)
     bomb_rct.centery = randint(0, scrn_rct.height)
 
-    vx, vy = 1, 1
+    vx = 2
+    vy = 2
 
     clock = pg.time.Clock()
 
@@ -71,11 +72,13 @@ def main():
         bomb_rct.move_ip(vx, vy)
         scrn_sfc.blit(bomb_sfc,bomb_rct)
 
-        if tori_rct.colliderect(bomb_rct): 
+        if tori_rct.colliderect(bomb_rct):
+            scrn_sfc.fill((0,0,0)) 
             fonto = pg.font.Font(None, 200)
             moji = "Game Over"
             txt = fonto.render(str(moji),True,(255,0,0))
             scrn_sfc.blit(txt, (400,450))
+            
             pg.display.update()
             clock.tick(1)
             return
