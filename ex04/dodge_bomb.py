@@ -72,6 +72,12 @@ def main():
         scrn_sfc.blit(bomb_sfc,bomb_rct)
 
         if tori_rct.colliderect(bomb_rct): 
+            fonto = pg.font.Font(None, 200)
+            moji = "Game Over"
+            txt = fonto.render(str(moji),True,(255,0,0))
+            scrn_sfc.blit(txt, (400,450))
+            pg.display.update()
+            clock.tick(1)
             return
 
         pg.display.update()
