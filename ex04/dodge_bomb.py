@@ -29,6 +29,7 @@ def main():
     tori_rct = tori_sfc.get_rect()
     tori_rct.center = 900, 400
 
+    #爆弾の作成
     bomb_sfc = pg.Surface((100,100))
     bomb_sfc.set_colorkey((0,0,0))
     pg.draw.circle(bomb_sfc,(255,0,0),(50,50),50) #半径50の赤い円
