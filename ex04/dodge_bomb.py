@@ -2,6 +2,20 @@ import pygame as pg
 import sys
 from random import randint
 
+def check_bound(obj_rct, scr_rct):
+    """
+    #obj_rct : こうかとんrctまたは爆弾rct
+    src_rct : スクリーンrct
+    領域内 : +1 /領域外 : -1
+    """
+    yoko, take = 1, 1
+    if obj_rct.left < scr_rct.left or scr_rct.right < obj_rct.right:
+        yoko = -1
+    if obj_rct.top < scr_rct.top or scr_rct.bottom < obj_rct.bottom:
+        take = -1
+
+    return yoko, take
+
 
 def main():
     pg.display.set_caption("逃げろ！こうかとん") #タイトルバーに「逃げろ！こうかとん」と表示
@@ -38,11 +52,27 @@ def main():
         if key_states[pg.K_DOWN]: tori_rct.centery += 1
         if key_states[pg.K_LEFT]: tori_rct.centerx -= 1
         if key_states[pg.K_RIGHT]: tori_rct.centerx += 1
-
+        yoko, take = check_bound(tori_rct, scrn_rct)
+        if yoko == -1:
+            if key_states[pg.K_LEFT]:
+                tori_rct.centerx += 1
+            if key_states[pg.K_RIGHT]:
+                tori_rct.centerx -= 1
+        if take == -1:
+            if key_states[pg.K_UP]:
+                tori_rct.centery += 1
+            if key_states[pg.K_DOWN]:
+                tori_rct.centery -= 1
         scrn_sfc.blit(tori_sfc, tori_rct)
 
+        yoko, take = check_bound(bomb_rct,scrn_rct)
+        vx *= yoko
+        vy *= take
         bomb_rct.move_ip(vx, vy)
         scrn_sfc.blit(bomb_sfc,bomb_rct)
+
+        if tori_rct.colliderect(bomb_rct): 
+            return
 
         pg.display.update()
         clock.tick(1000)
