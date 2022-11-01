@@ -93,7 +93,7 @@ def main():
 
     # 練習5
     bkd = Bomb((255, 0, 0), 10, (+5, +5), scr)
-
+    
     clock = pg.time.Clock() # 練習1
     while True:
         scr.blit() # 練習2
@@ -130,8 +130,6 @@ def main():
 
         pg.display.update() #練習2
         clock.tick(1000)
-
-    
 
 
 if __name__ == "__main__":
