@@ -79,12 +79,11 @@ def check_bound(obj_rct, scr_rct):
     return yoko, tate
 
 
-#bgmの再生
-pg.mixer.init(frequency = 44100)
-pg.mixer.music.load("ex05/data/house_lo.wav")
-pg.mixer.music.play(0)
-
 def main():
+    #bgmの再生
+    pg.mixer.init(frequency = 44100)
+    pg.mixer.music.load("ex05/data/house_lo.wav")
+    pg.mixer.music.play(0)
     # 練習1
     scr = Screen("負けるな！こうかとん", (1600, 900), "fig/pg_bg.jpg")
 
