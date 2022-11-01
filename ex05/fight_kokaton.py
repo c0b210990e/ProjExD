@@ -114,9 +114,10 @@ def main():
             exp_rct = exp_sfc.get_rect()
             scr.sfc.blit(exp_sfc, exp_rct)
 
-         #ゲームオーバーの音楽再生
+        #ゲームオーバーの音楽再生
             pg.mixer.music.load("ex05/data/house_lo.ogg")
             pg.mixer.music.play(0)
+        #以下ゲームオーバー画面
             scr.sfc.fill((0,0,0)) #画面の色を黒にする 
             fonto = pg.font.Font(None, 200) #Game Overを表示
             moji = "Game Over"
