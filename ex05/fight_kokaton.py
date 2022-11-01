@@ -84,10 +84,9 @@ def check_bound(obj_rct, scr_rct):
 
 
 #bgmの再生
-def bgm():
-    pg.mixer.init(frequency = 44100)
-    pg.mixer.music.load("ex05/data/house_lo.wav")
-    pg.mixer.music.play(1)
+pg.mixer.init(frequency = 44100)
+pg.mixer.music.load("ex05/data/house_lo.wav")
+pg.mixer.music.play(1)
 
 def main():
     # 練習1
@@ -144,3 +143,4 @@ if __name__ == "__main__":
     main()    # ゲームの本体
     pg.quit() # 初期化の解除
     sys.exit()
+    
