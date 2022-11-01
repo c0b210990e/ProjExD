@@ -2,6 +2,7 @@ import pygame as pg
 import sys
 from random import randint
 
+
 class Screen:
     def __init__(self, title, wh, bgimg):
         pg.display.set_caption(title) #逃げろ！こうかとん
@@ -63,6 +64,10 @@ class Bomb:
         self.vy *= tate
         self.blit(scr) # =scr.sfc.blit(self.sfc, self.rct)
 
+    def move(self):
+        self.vx += 1
+        self.vy += 1  
+
 
 def check_bound(obj_rct, scr_rct):
     """
@@ -78,9 +83,15 @@ def check_bound(obj_rct, scr_rct):
     return yoko, tate
 
 
+#bgmの再生
+def bgm():
+    pg.mixer.init(frequency = 44100)
+    pg.mixer.music.load("ex05/data/house_lo.wav")
+    pg.mixer.music.play(1)
+
 def main():
     # 練習1
-    scr = Screen("逃げろ！こうかとん", (1600, 900), "fig/pg_bg.jpg")
+    scr = Screen("負けるな！こうかとん", (1600, 900), "fig/pg_bg.jpg")
 
     # 練習3
     kkt = Bird("fig/6.png", 2.0, (900, 400))
@@ -104,10 +115,28 @@ def main():
 
         # 練習8
         if kkt.rct.colliderect(bkd.rct): # こうかとんrctが爆弾rctと重なったら
+            exp_sfc = pg.image.load("ex05/data/explosion1.gif")
+            exp_sfc = pg.transform.rotozoom(exp_sfc, 0, 2.0)
+            exp_rct = exp_sfc.get_rect()
+            scr.sfc.blit(exp_sfc, exp_rct)
+
+            pg.mixer.init(frequency = 44100)
+            pg.mixer.music.load("ex05/data/house_lo.wav")
+            pg.mixer.music.play(1)
+            scr.sfc.fill((0,0,0)) #画面の色を黒にする 
+            fonto = pg.font.Font(None, 200) #Game Overを表示
+            moji = "Game Over"
+            txt = fonto.render(str(moji),True,(255,0,0))
+            scr.sfc.blit(txt, (400,450))
+            
+            pg.display.update()
+            clock.tick(1)
             return
 
         pg.display.update() #練習2
         clock.tick(1000)
+
+    
 
 
 if __name__ == "__main__":
