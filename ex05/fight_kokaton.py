@@ -64,7 +64,12 @@ class Bomb:
         self.vy *= tate
         self.blit(scr) # =scr.sfc.blit(self.sfc, self.rct)
  
-
+class BGM:
+    def __init__(self,bgm):
+    #bgmの再生
+        pg.mixer.init(frequency = 44100)
+        pg.mixer.music.load(bgm)
+        pg.mixer.music.play(0)
 def check_bound(obj_rct, scr_rct):
     """
     obj_rct：こうかとんrct，または，爆弾rct
@@ -80,10 +85,7 @@ def check_bound(obj_rct, scr_rct):
 
 
 def main():
-    #bgmの再生
-    pg.mixer.init(frequency = 44100)
-    pg.mixer.music.load("ex05/data/house_lo.wav")
-    pg.mixer.music.play(0)
+    
     # 練習1
     scr = Screen("負けるな！こうかとん", (1600, 900), "fig/pg_bg.jpg")
 
@@ -107,6 +109,8 @@ def main():
         # 練習7
         bkd.update(scr)
 
+        #BGM再生
+        bgm = BGM("ex05/data/house_lo.wav")
         # 練習8
         if kkt.rct.colliderect(bkd.rct): # こうかとんrctが爆弾rctと重なったら
             exp_sfc = pg.image.load("ex05/data/explosion1.gif")
@@ -114,6 +118,7 @@ def main():
             exp_rct = exp_sfc.get_rect()
             scr.sfc.blit(exp_sfc, exp_rct)
 
+            
         #ゲームオーバーの音楽再生
             pg.mixer.music.load("ex05/data/house_lo.ogg")
             pg.mixer.music.play(0)
