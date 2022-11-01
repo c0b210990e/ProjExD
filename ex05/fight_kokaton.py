@@ -82,7 +82,7 @@ def check_bound(obj_rct, scr_rct):
 #bgmの再生
 pg.mixer.init(frequency = 44100)
 pg.mixer.music.load("ex05/data/house_lo.wav")
-pg.mixer.music.play(1)
+pg.mixer.music.play(0)
 
 def main():
     # 練習1
@@ -115,9 +115,9 @@ def main():
             exp_rct = exp_sfc.get_rect()
             scr.sfc.blit(exp_sfc, exp_rct)
 
-            pg.mixer.init(frequency = 44100) #ゲームオーバーの音楽再生
-            pg.mixer.music.load("ex05/data/house_lo.wav")
-            pg.mixer.music.play(1)
+         #ゲームオーバーの音楽再生
+            pg.mixer.music.load("ex05/data/house_lo.ogg")
+            pg.mixer.music.play(0)
             scr.sfc.fill((0,0,0)) #画面の色を黒にする 
             fonto = pg.font.Font(None, 200) #Game Overを表示
             moji = "Game Over"
@@ -125,7 +125,7 @@ def main():
             scr.sfc.blit(txt, (400,450))
             
             pg.display.update()
-            clock.tick(1)
+            clock.tick(0.5)
             return
 
         pg.display.update() #練習2
