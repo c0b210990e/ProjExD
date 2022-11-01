@@ -63,11 +63,7 @@ class Bomb:
         self.vx *= yoko
         self.vy *= tate
         self.blit(scr) # =scr.sfc.blit(self.sfc, self.rct)
-
-    def move(self):
-        self.vx += 1
-        self.vy += 1  
-
+ 
 
 def check_bound(obj_rct, scr_rct):
     """
@@ -96,7 +92,7 @@ def main():
     kkt = Bird("fig/6.png", 2.0, (900, 400))
 
     # 練習5
-    bkd = Bomb((255, 0, 0), 10, (+1, +1), scr)
+    bkd = Bomb((255, 0, 0), 10, (+5, +5), scr)
 
     clock = pg.time.Clock() # 練習1
     while True:
@@ -119,7 +115,7 @@ def main():
             exp_rct = exp_sfc.get_rect()
             scr.sfc.blit(exp_sfc, exp_rct)
 
-            pg.mixer.init(frequency = 44100)
+            pg.mixer.init(frequency = 44100) #ゲームオーバーの音楽再生
             pg.mixer.music.load("ex05/data/house_lo.wav")
             pg.mixer.music.play(1)
             scr.sfc.fill((0,0,0)) #画面の色を黒にする 
